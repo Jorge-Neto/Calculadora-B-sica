@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div>Basic Calculator</div>
+      <div>
+        <div>
+          <label id="lastValue">&nbsp;</label>
+          <input type="text" id="result" disabled />
+        </div>
+        <div>
+          <button type="submit" id="btnOne">1</button>
+          <button type="submit" id="btnTwo">2</button>
+          <button type="submit" id="btnThree">3</button>
+          <button type="submit" id="btnFour">4</button>
+          <button type="submit" id="btnAd">+</button>
+        </div>
+        <div>
+          <button type="submit" id="btnSb">-</button>
+          <button type="submit" id="btnMt">*</button>
+          <button type="submit" id="btnDv">/</button>
+          <button type="submit" id="btnIg">=</button>
+        </div>
+        <div>
+          <button type="submit" id="btnCE">CE</button>
+          <button type="submit" id="btnC">C</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      actual = 0;
+      previous = 0;
+      operation = "";
+      hasResults = false;
+
+      inputResult = document.getElementById("result");
+      lastValue = document.getElementById("lastValue");
+      btnC = document
+        .getElementById("btnC")
+        .addEventListener("click", function () {
+          inputResult.value = "";
+          lastValue.innerHTML = "";
+          previous, (actual = 0);
+          operation = "";
+        });
+      btnOne = document
+        .getElementById("btnOne")
+        .addEventListener("click", function () {
+          verifyRasults();
+
+          inputResult.value += 1;
+        });
+      btnTwo = document
+        .getElementById("btnTwo")
+        .addEventListener("click", function () {
+          verifyRasults();
+
+          inputResult.value += 2;
+        });
+      btnThree = document
+        .getElementById("btnThree")
+        .addEventListener("click", function () {
+          verifyRasults();
+
+          inputResult.value += 3;
+        });
+      btnFour = document
+        .getElementById("btnFour")
+        .addEventListener("click", function () {
+          verifyRasults();
+
+          inputResult.value += 4;
+        });
+      btnAd = document
+        .getElementById("btnAd")
+        .addEventListener("click", function () {
+          operation = "+";
+          previous = parseInt(inputResult.value);
+          lastValue.innerHTML = previous + " " + operation;
+          inputResult.value = "";
+        });
+      btnSb = document
+        .getElementById("btnSb")
+        .addEventListener("click", function () {
+          operation = "-";
+          previous = parseInt(inputResult.value);
+          lastValue.innerHTML = previous + " " + operation;
+          inputResult.value = "";
+        });
+      btnMt = document
+        .getElementById("btnMt")
+        .addEventListener("click", function () {
+          operation = "*";
+          previous = parseInt(inputResult.value);
+          lastValue.innerHTML = previous + " " + operation;
+          inputResult.value = "";
+        });
+      btnDv = document
+        .getElementById("btnDv")
+        .addEventListener("click", function () {
+          operation = "/";
+          previous = parseInt(inputResult.value);
+          lastValue.innerHTML = previous + " " + operation;
+          inputResult.value = "";
+        });
+      btnIg = document
+        .getElementById("btnIg")
+        .addEventListener("click", function () {
+          actual = parseInt(inputResult.value);
+          if (operation == "+") {
+            actual = previous + actual;
+            inputResult.value = actual;
+          } else if (operation == "-") {
+            actual = previous - actual;
+            inputResult.value = actual;
+          } else if (operation == "*") {
+            actual = previous * actual;
+            inputResult.value = actual;
+          } else if (operation == "/") {
+            actual = previous / actual;
+            inputResult.value = actual;
+          }
+          hasResults = true;
+          previous, (actual = 0);
+          lastValue.innerHTML = "";
+        });
+
+      function verifyRasults() {
+        if (hasResults === true) {
+          inputResult.value = "";
+          hasResults = false;
+        }
+      }
+    </script>
+  </body>
+</html>

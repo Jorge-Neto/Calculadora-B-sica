@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles/style.css" />
 
     <title>Basic Calculator</title>
@@ -33,31 +34,32 @@
         <div class="col-md-6">
           <table>
             <tr>
-                <td colspan="2"><button type="submit" class="btn btn-secondary large" onclick="clearInput()">C</button></td>
-                <td><button type="submit" class="btn btn-secondary" onclick="setZero()">CE</button></td>
-                <td><button type="submit" class="btn btn-secondary" onclick="setOperation('/')">/</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="clearInput()">C</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="setZero()">CE</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="backspaceFunction()"><i class="bi bi-backspace"></i></button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="setOperation('/')">/</button></td>
             </tr>
             <tr>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(7)">7</button></td>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(8)">8</button></td>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(9)">9</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(7)">7</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(8)">8</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(9)">9</button></td>
               <td><button type="submit" class="btn btn-secondary" onclick="setOperation('*')">*</button></td>
             </tr>
             <tr>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(4)">4</button></td>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(5)">5</button></td>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(6)">6</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(4)">4</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(5)">5</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(6)">6</button></td>
               <td><button type="submit" class="btn btn-secondary" onclick="setOperation('-')">-</button></td>
             </tr>
             <tr>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(1)">1</button></td>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(2)">2</button></td>
-              <td><button type="submit" class="btn btn-light" onclick="verifyResults(3)">3</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(1)">1</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(2)">2</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyInput(3)">3</button></td>
               <td><button type="submit" class="btn btn-secondary" onclick="setOperation('+')">+</button></td>
             </tr>
             <tr>
-              <td colspan="2"><button type="submit" class="btn btn-light large" onclick="verifyResults(0)">0</button></td>
-              <td><button type="submit" class="btn btn-secondary" onclick="verifyResults('.')">.</button></td>
+              <td colspan="2"><button type="submit" class="btn btn-light large" onclick="verifyInput(0)">0</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="verifyInput('.')">.</button></td>
               <td><button type="submit" class="btn btn-secondary" onclick="setResult()">=</button></td>
             </tr>
         </div>
@@ -70,5 +72,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/index.js"></script>
+    
   </body>
 </html>

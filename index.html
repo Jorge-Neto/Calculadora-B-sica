@@ -4,140 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <title>Basic Calculator</title>
   </head>
   <body>
     <div class="container">
-      <div>Basic Calculator</div>
-      <div>
-        <div>
-          <label id="lastValue">&nbsp;</label>
-          <input type="text" id="result" disabled />
+      <div class="calculator">
+        <h2>Basic Calculator</h2>
+        <div class="input-group mb-1 ">
+          <span class="input-text" id="lastValue">&nbsp;</span>
+        </div>        
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="result"
+            aria-describedby="lastValue"
+            disabled
+          />
         </div>
-        <div>
-          <button type="submit" id="btnOne">1</button>
-          <button type="submit" id="btnTwo">2</button>
-          <button type="submit" id="btnThree">3</button>
-          <button type="submit" id="btnFour">4</button>
-          <button type="submit" id="btnAd">+</button>
-        </div>
-        <div>
-          <button type="submit" id="btnSb">-</button>
-          <button type="submit" id="btnMt">*</button>
-          <button type="submit" id="btnDv">/</button>
-          <button type="submit" id="btnIg">=</button>
-        </div>
-        <div>
-          <button type="submit" id="btnCE">CE</button>
-          <button type="submit" id="btnC">C</button>
+        <div class="col-md-6">
+          <table>
+            <tr>
+                <td colspan="2"><button type="submit" class="btn btn-secondary large" onclick="clearInput()">C</button></td>
+                <td><button type="submit" class="btn btn-secondary" onclick="setZero()">CE</button></td>
+                <td><button type="submit" class="btn btn-secondary" onclick="setOperation('/')">/</button></td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(7)">7</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(8)">8</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(9)">9</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="setOperation('*')">*</button></td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(4)">4</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(5)">5</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(6)">6</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="setOperation('-')">-</button></td>
+            </tr>
+            <tr>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(1)">1</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(2)">2</button></td>
+              <td><button type="submit" class="btn btn-light" onclick="verifyResults(3)">3</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="setOperation('+')">+</button></td>
+            </tr>
+            <tr>
+              <td colspan="2"><button type="submit" class="btn btn-light large" onclick="verifyResults(0)">0</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="verifyResults('.')">.</button></td>
+              <td><button type="submit" class="btn btn-secondary" onclick="setResult()">=</button></td>
+            </tr>
         </div>
       </div>
     </div>
 
-    <script>
-      actual = 0;
-      previous = 0;
-      operation = "";
-      hasResults = false;
-
-      inputResult = document.getElementById("result");
-      lastValue = document.getElementById("lastValue");
-      btnC = document
-        .getElementById("btnC")
-        .addEventListener("click", function () {
-          inputResult.value = "";
-          lastValue.innerHTML = "";
-          previous, (actual = 0);
-          operation = "";
-        });
-      btnOne = document
-        .getElementById("btnOne")
-        .addEventListener("click", function () {
-          verifyRasults();
-
-          inputResult.value += 1;
-        });
-      btnTwo = document
-        .getElementById("btnTwo")
-        .addEventListener("click", function () {
-          verifyRasults();
-
-          inputResult.value += 2;
-        });
-      btnThree = document
-        .getElementById("btnThree")
-        .addEventListener("click", function () {
-          verifyRasults();
-
-          inputResult.value += 3;
-        });
-      btnFour = document
-        .getElementById("btnFour")
-        .addEventListener("click", function () {
-          verifyRasults();
-
-          inputResult.value += 4;
-        });
-      btnAd = document
-        .getElementById("btnAd")
-        .addEventListener("click", function () {
-          operation = "+";
-          previous = parseInt(inputResult.value);
-          lastValue.innerHTML = previous + " " + operation;
-          inputResult.value = "";
-        });
-      btnSb = document
-        .getElementById("btnSb")
-        .addEventListener("click", function () {
-          operation = "-";
-          previous = parseInt(inputResult.value);
-          lastValue.innerHTML = previous + " " + operation;
-          inputResult.value = "";
-        });
-      btnMt = document
-        .getElementById("btnMt")
-        .addEventListener("click", function () {
-          operation = "*";
-          previous = parseInt(inputResult.value);
-          lastValue.innerHTML = previous + " " + operation;
-          inputResult.value = "";
-        });
-      btnDv = document
-        .getElementById("btnDv")
-        .addEventListener("click", function () {
-          operation = "/";
-          previous = parseInt(inputResult.value);
-          lastValue.innerHTML = previous + " " + operation;
-          inputResult.value = "";
-        });
-      btnIg = document
-        .getElementById("btnIg")
-        .addEventListener("click", function () {
-          actual = parseInt(inputResult.value);
-          if (operation == "+") {
-            actual = previous + actual;
-            inputResult.value = actual;
-          } else if (operation == "-") {
-            actual = previous - actual;
-            inputResult.value = actual;
-          } else if (operation == "*") {
-            actual = previous * actual;
-            inputResult.value = actual;
-          } else if (operation == "/") {
-            actual = previous / actual;
-            inputResult.value = actual;
-          }
-          hasResults = true;
-          previous, (actual = 0);
-          lastValue.innerHTML = "";
-        });
-
-      function verifyRasults() {
-        if (hasResults === true) {
-          inputResult.value = "";
-          hasResults = false;
-        }
-      }
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/index.js"></script>
   </body>
 </html>
